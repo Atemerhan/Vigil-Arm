@@ -1,0 +1,39 @@
+name: geometry
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  OPENSCAD_SNAPSHOT: "2026.11.10"
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install OpenSCAD ${{ env.OPENSCAD_SNAPSHOT }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libopengl0 ca-certificates curl
+          curl -fsSL -o "$RUNNER_TEMP/OpenSCAD.AppImage" \
+            "https://files.openscad.org/snapshots/OpenSCAD-${OPENSCAD_SNAPSHOT}-x86_64.AppImage"
+          chmod +x "$RUNNER_TEMP/OpenSCAD.AppImage"
+          (cd "$RUNNER_TEMP" && ./OpenSCAD.AppImage --appimage-extract)
+          sudo ln -sfn "$RUNNER_TEMP/squashfs-root/usr/bin/openscad" /usr/local/bin/openscad
+          openscad --version
+
+      - name: Install Python check dependencies
+        run: python3 -m pip install -r checks/requirements.txt
+
+      - name: Re-export STLs and check geometry
+        run: ./scripts/check.sh

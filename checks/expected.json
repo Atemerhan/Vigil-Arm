@@ -1,0 +1,126 @@
+{
+  "openscad_snapshot": "2026.11.10",
+  "openscad_backend": "CGAL",
+  "notes": [
+    "Extents are the documented overall envelopes. Finger-grip depths in vigil.pdf are rounded to 0.1 mm and include surface texture, so documented_extents_mm is 0.1.",
+    "Re-export tolerances are set from a CGAL export of the committed sources: bounding boxes matched exactly, vertex mismatch stayed under 0.0001 mm, and relative volume error stayed under 2e-7. The default Manifold backend does not reproduce these meshes.",
+    "The anatomical through-test uses 55 rays because vigil.md records 55 longitudinal lines inside the 25 × 6 mm webbing rectangle. Finger slots use a 40 × 6 mm band rectangle inset by 0.5 mm, plus probes 0.6 mm inside and outside the 44 × 8 mm clear opening."
+  ],
+  "tolerances": {
+    "documented_extents_mm": 0.1,
+    "reexport_bbox_mm": 0.02,
+    "reexport_volume_rel": 1e-5,
+    "reexport_vertex_hausdorff_mm": 0.05
+  },
+  "passage_presets": {
+    "finger_band": {
+      "axis": "x",
+      "through_rect_mm": [6.0, 40.0],
+      "through_grid": [5, 9],
+      "inset_mm": 0.5,
+      "station_mm": 0.0,
+      "solid_offsets_mm": [[4.6, 0.0], [-4.6, 0.0], [0.0, 22.6], [0.0, -22.6]],
+      "void_offsets_mm": [[0.0, 0.0], [3.4, 0.0], [-3.4, 0.0], [0.0, 21.2], [0.0, -21.2]],
+      "source": "vigil.md and vigil.pdf page 6. The clear slot is 44 × 8 mm with its long side along grip height (Z) and its short side along depth (Y). The band section that must pass is up to 40 mm wide and 6 mm thick. Rays travel along X through the rear rail. Slot center Y is nominal body depth × 0.23 and Z is height × 0.515, which rounds to the center height printed on page 6."
+    }
+  },
+  "models": [
+    {
+      "id": "anatomical",
+      "scad": "vigil.scad",
+      "stl": "vigil.stl",
+      "extents_mm": [108.0, 64.0, 140.0],
+      "extents_source": "vigil.md and vigil.pdf page 1: overall envelope 108 × 64 × 140 mm.",
+      "euler": -4,
+      "passage": {
+        "axis": "z",
+        "center_mm": [0.0, 0.0],
+        "through_rect_mm": [25.0, 6.0],
+        "through_grid": [11, 5],
+        "clear_ray_count": 55,
+        "inset_mm": 0.0,
+        "station_mm": 70.0,
+        "solid_offsets_mm": [[15.1, 0.0], [-15.1, 0.0], [0.0, 5.5], [0.0, -5.5]],
+        "void_offsets_mm": [[0.0, 0.0], [13.7, 0.0], [-13.7, 0.0], [0.0, 4.2], [0.0, -4.2]],
+        "source": "vigil.md: 55 longitudinal lines inside the 25 × 6 mm webbing rectangle, and a narrowest section of 29 × 10 mm. Station z = 70 mm lies in the unflared part of the channel (the flare returns to zero between about 4 mm and 123 mm). Solid probes are 0.6 mm outside the 29 × 10 mm flats; void probes are 0.8 mm inside them. The channel axis is centered at x = 0, y = 0."
+      }
+    },
+    {
+      "id": "03",
+      "scad": "03/vigil.scad",
+      "stl": "03/vigil.stl",
+      "extents_mm": [68.0, 62.3, 123.0],
+      "extents_source": "vigil.pdf page 3. Nominal body before texture is 68 × 62 × 123 mm.",
+      "euler": 0,
+      "pdf_center_z_mm": 63.3,
+      "passage_preset": "finger_band",
+      "passage": {"center_mm": [14.26, 63.345]}
+    },
+    {
+      "id": "04",
+      "scad": "04/vigil.scad",
+      "stl": "04/vigil.stl",
+      "extents_mm": [53.0, 52.0, 113.0],
+      "extents_source": "vigil.pdf page 3. This smooth grip's envelope equals the nominal body, 53 × 52 × 113 mm.",
+      "euler": 0,
+      "pdf_center_z_mm": 58.2,
+      "passage_preset": "finger_band",
+      "passage": {"center_mm": [11.96, 58.195]}
+    },
+    {
+      "id": "05",
+      "scad": "05/vigil.scad",
+      "stl": "05/vigil.stl",
+      "extents_mm": [64.0, 58.3, 117.0],
+      "extents_source": "vigil.pdf page 3. Nominal body before texture is 64 × 58 × 117 mm.",
+      "euler": 0,
+      "pdf_center_z_mm": 60.3,
+      "passage_preset": "finger_band",
+      "passage": {"center_mm": [13.34, 60.255]}
+    },
+    {
+      "id": "06",
+      "scad": "06/vigil.scad",
+      "stl": "06/vigil.stl",
+      "extents_mm": [68.0, 61.3, 123.0],
+      "extents_source": "vigil.pdf page 4. Nominal body before texture is 68 × 61 × 123 mm.",
+      "euler": 0,
+      "pdf_center_z_mm": 63.3,
+      "passage_preset": "finger_band",
+      "passage": {"center_mm": [14.03, 63.345]}
+    },
+    {
+      "id": "07",
+      "scad": "07/vigil.scad",
+      "stl": "07/vigil.stl",
+      "extents_mm": [65.0, 61.6, 118.0],
+      "extents_source": "vigil.pdf page 4. Nominal body before texture is 65 × 61 × 118 mm.",
+      "euler": 0,
+      "pdf_center_z_mm": 60.8,
+      "passage_preset": "finger_band",
+      "passage": {"center_mm": [14.03, 60.77]}
+    },
+    {
+      "id": "08",
+      "scad": "08/vigil.scad",
+      "stl": "08/vigil.stl",
+      "extents_mm": [68.0, 64.4, 120.0],
+      "extents_source": "vigil.pdf page 4. Nominal body before texture is 68 × 64 × 120 mm.",
+      "euler": 0,
+      "pdf_center_z_mm": 61.8,
+      "passage_preset": "finger_band",
+      "passage": {"center_mm": [14.72, 61.8]}
+    },
+    {
+      "id": "09",
+      "scad": "09/vigil.scad",
+      "stl": "09/vigil.stl",
+      "extents_mm": [60.0, 49.4, 110.0],
+      "extents_source": "vigil.pdf page 4. Nominal body before texture is 60 × 49 × 110 mm.",
+      "euler": 0,
+      "pdf_center_z_mm": 56.6,
+      "passage_preset": "finger_band",
+      "passage": {"center_mm": [11.27, 56.65]}
+    }
+  ]
+}
