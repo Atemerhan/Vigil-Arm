@@ -1,8 +1,8 @@
 # 夹具载荷记录 / Fixture load-test record
 
-空白记录表。表里没有实测数据，也不预填试验载荷或合格线。几何复核已经完成；打印、装配、载荷和疲劳记录仍按 [vigil.md](../vigil.md) 的「打印与验证」和 [vigil.pdf](../vigil.pdf) 第 5 页留待实物补充。试验载荷和通过标准由学校负责老师按实际使用条件填写。
+空白记录表。表里没有实测数据，也不预填试验载荷或合格线。几何复核已经完成；打印、装配、载荷和疲劳记录仍按 [vigil.md](../vigil.md)（[英文](../vigil.en.md)）的「打印与验证」和 [vigil.pdf](../vigil.pdf) 第 5 页留待实物补充。试验载荷和通过标准由学校负责老师按实际使用条件填写。
 
-Blank record. No measurements, test loads, or pass limits are filled in. Geometry has been checked; print, assembly, load, and fatigue records are still open, as described in [vigil.md](../vigil.md) and on page 5 of [vigil.pdf](../vigil.pdf). The responsible teacher sets the test load and the pass criteria from the actual conditions of use.
+Blank record. No measurements, test loads, or pass limits are filled in. Geometry has been checked; print, assembly, load, and fatigue records are still open, as described in [vigil.md](../vigil.md) ([English](../vigil.en.md)) and on page 5 of [vigil.pdf](../vigil.pdf). The responsible teacher sets the test load and the pass criteria from the actual conditions of use.
 
 同一列也在 [load-test-record.csv](load-test-record.csv) 里。CSV 只有表头，每一行对应一次加载，并重复试样和打印栏，方便把多次加载记在同一张表上。
 
