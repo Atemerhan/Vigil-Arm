@@ -36,6 +36,12 @@
 openscad --hardwarnings --export-format binstl -o vigil.stl vigil.scad
 ```
 
+整库几何检查从仓库根目录运行。脚本会用 CGAL 后端重新导出每个模型，再核对外包络、通道贯通，以及与已提交 STL 的体积和包围盒：
+
+```sh
+./scripts/check.sh
+```
+
 通过 webbing_width 与 webbing_stack 调整通道，改动后重检侧窗旁余量。axial_passage 关闭时可查看初版外形。代码限制开启通道时的握身和侧窗基础尺寸，便于复核两者之间的间隔。
 
 参考：[打印方向与结构件设计](https://help.prusa3d.com/article/modeling-with-3d-printing-in-mind_164135) · [弹力带检查与连接注意事项](https://abuhb.nhs.wales/files/patient-information-leaflets1/physiotherapy/safety-advice-when-exercising-with-resistance-bands-or-tubing-piu1332/)
@@ -43,6 +49,8 @@ openscad --hardwarnings --export-format binstl -o vigil.stl vigil.scad
 ## 指屈把手穿带版
 
 03 至 09 在背部靠近握身处开设左右贯通槽。槽的长边沿把手高度，净尺寸为 44 × 8 mm，两端渐扩。设计输入是弹力带宽 26 至 40 mm、穿孔部分总厚度不超过 6 mm。折叠的带子量叠在一起的总厚度，端头较厚时单独测量。原有顶部凹口、掌面和底部外形特征保留。外包络与此前模型一致。
+
+03 至 09 的造型在根目录 `finger_flexor.scad`，各文件夹里的 `vigil.scad` 只指定款式。文件夹编号比原来的预设名大 2：03 对应 grip_01，一直到 09 对应 grip_07。02 号圆筒握套以图纸为准，源码不在这组指屈把手里。
 
 弹力带从一侧穿入、另一侧出来。按弹力带制造商允许的连接方式固定，检查外露带段是否压到握指或在孔口磨擦。原底部盲窝和背部浅槽继续作为外形特征。打印前在切片器检查横孔顶部桥接或支撑，确认孔内支撑能从两端清理。首次使用前按完整装配做夹具加载验证。
 

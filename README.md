@@ -31,6 +31,10 @@ The **29 × 10 mm** longitudinal channel accommodates **25 mm** wide webbing wit
 
 The seven grips retain their original grip faces, top recesses, and overall dimensions. Each has a side-to-side slot near the back so a resistance band can pass through the body. The clear opening is **44 × 8 mm**, designed for bands **26–40 mm** wide with a total thickness of up to **6 mm** at the pass-through. Page 6 of the updated [PDF drawings](vigil.pdf) shows the slot cross-section and the position on each model.
 
+七款的几何写在共用的 [finger_flexor.scad](finger_flexor.scad) 里，各文件夹的 `vigil.scad` 只选择款式。文件夹 03–09 对应旧预设名 grip_01–grip_07，也就是文件夹编号减 2。图纸中的 02 号圆筒握套是另一件模型。
+
+All seven geometries live in the shared [finger_flexor.scad](finger_flexor.scad); each folder's `vigil.scad` only selects the variant. Folders 03–09 are the old presets grip_01–grip_07, which is the folder number minus 2. The cylindrical sleeve 02 in the drawings is a separate model.
+
 | 编号 / No. | 款式 | Model | 文件 / Files |
 | --- | --- | --- | --- |
 | 03 | 宽体双肩握把 | Wide dual-shoulder grip | [STL](03/vigil.stl) · [OpenSCAD](03/vigil.scad) · [预览 / Preview](03/vigil.png) |
@@ -46,3 +50,18 @@ The seven grips retain their original grip faces, top recesses, and overall dime
 已检查仿生握把及七款指屈把手的网格、尺寸和通道贯通。打印件的承载能力仍待实物验证。
 
 The meshes, dimensions, and through-passages of the anatomical grip and all seven finger flexion grips have been checked. The load capacity of the printed parts still requires physical testing.
+
+## 几何检查 / Geometry checks
+
+在仓库根目录用一条命令重新导出全部 STL，并核对水密网格、文档中的外包络、织带或弹力带通道，以及重新导出的网格与已提交 STL 的偏差：
+
+From the repository root, one command re-exports every STL and checks the watertight mesh, the documented envelope, the webbing or band passage, and the drift between that export and the committed STL:
+
+```sh
+python3 -m pip install -r checks/requirements.txt
+./scripts/check.sh
+```
+
+检查使用 OpenSCAD 的 `--backend CGAL`。预期尺寸在 [checks/expected.json](checks/expected.json)。夹具载荷的空白记录表在 [docs/load-test-record.md](docs/load-test-record.md)，其中没有实测数据。
+
+The check runs OpenSCAD with `--backend CGAL`. Expected dimensions are in [checks/expected.json](checks/expected.json). The blank fixture-load sheet is [docs/load-test-record.md](docs/load-test-record.md); it contains no measured results.

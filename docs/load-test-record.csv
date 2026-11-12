@@ -1,0 +1,1 @@
+sample_id,model,date,printer,material,nozzle,wall_lines,infill,print_orientation,planned_max_pull,band_width,stack_thickness,opening_size,fit_notes,step,direction,load,load_unit,hold_time,cycles,deflection,permanent_set,cracks,layer_split,webbing_wear,failure_mode,where_observed,pass_criteria,result
